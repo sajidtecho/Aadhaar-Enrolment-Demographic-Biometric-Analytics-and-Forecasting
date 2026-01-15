@@ -1,0 +1,917 @@
+
+[VALID DISTRICTS]
+|?|
+|Adilabad|
+|Agar Malwa|
+|Agra|
+|Ahilyanagar|
+|Ahmadnagar|
+|Ahmed Nagar|
+|Ahmedabad|
+|Aizawl|
+|Ajmer|
+|Akhera|
+|Akola|
+|Alappuzha|
+|Aligarh|
+|Alipurduar|
+|Alirajpur|
+|Allahabad|
+|Alluri Sitharama Raju|
+|Almora|
+|Alwar|
+|Ambala|
+|Ambedkar Nagar|
+|Amethi|
+|Amravati|
+|Amreli|
+|Amritsar|
+|Amroha|
+|Anakapalli|
+|Anand|
+|Anantapur|
+|Ananthapur|
+|Ananthapuramu|
+|Anantnag|
+|Andamans|
+|Angul|
+|Anjaw|
+|Annamayya|
+|Anugal|
+|Anugul  *|
+|Anuppur|
+|Araria|
+|Ariyalur|
+|Arvalli|
+|Arwal|
+|Ashok Nagar|
+|Auraiya|
+|Auraiya *|
+|Aurangabad|
+|Aurangabad(Bh)|
+|Ayodhya|
+|Azamgarh|
+|Bagalkot|
+|Bagalkot *|
+|Bageshwar|
+|Baghpat|
+|Bagpat|
+|Bahraich|
+|Bajali|
+|Baksa|
+|Balaghat|
+|Balangir|
+|Balasore|
+|Baleswar|
+|Ballari|
+|Ballia|
+|Bally Jagachha|
+|Balod|
+|Baloda Bazar|
+|Balotra|
+|Balrampur|
+|Banas Kantha|
+|Banaskantha|
+|Banda|
+|Bandipore|
+|Bandipur|
+|Bangalore|
+|Bangalore Rural|
+|Banka|
+|Bankura|
+|Banswara|
+|Bapatla|
+|Barabanki|
+|Baramulla|
+|Baran|
+|Barddhaman|
+|Bardez|
+|Bardhaman|
+|Bareilly|
+|Bargarh|
+|Barmer|
+|Barnala|
+|Barpeta|
+|Barwani|
+|Bastar|
+|Basti|
+|Bathinda|
+|Beawar|
+|Beed|
+|Begusarai|
+|Belagavi|
+|Belgaum|
+|Bemetara|
+|Bengaluru|
+|Bengaluru Rural|
+|Bengaluru South|
+|Betul|
+|Bhabua|
+|Bhadohi|
+|Bhadradri Kothagudem|
+|Bhadrak|
+|Bhagalpur|
+|Bhandara|
+|Bharatpur|
+|Bharuch|
+|Bhavnagar|
+|Bhilwara|
+|Bhind|
+|Bhiwani|
+|Bhojpur|
+|Bhopal|
+|Bid|
+|Bidar|
+|Bijapur(Kar)|
+|Bijnor|
+|Bikaner|
+|Bilaspur|
+|Birbhum|
+|Bishnupur|
+|Biswanath|
+|Bokaro|
+|Bokaro *|
+|Bongaigaon|
+|Botad|
+|Boudh|
+|Budaun|
+|Budgam|
+|Bulandshahar|
+|Bulandshahr|
+|Buldhana|
+|Bundi|
+|Burdwan|
+|Burhanpur|
+|Buxar|
+|Cachar|
+|Central Delhi|
+|Chamarajanagar|
+|Chamarajanagar *|
+|Chamba|
+|Chamoli|
+|Champawat|
+|Champhai|
+|Chamrajanagar|
+|Chamrajnagar|
+|Chandauli|
+|Chandauli *|
+|Chandel|
+|Chandigarh|
+|Chandrapur|
+|Changlang|
+|Charaideo|
+|Charkhi Dadri|
+|Chatra|
+|Chatrapati Sambhaji Nagar|
+|Chengalpattu|
+|Chennai|
+|Chhatarpur|
+|Chhatrapati Sambhajinagar|
+|Chhindwara|
+|Chhotaudepur|
+|Chickmagalur|
+|Chikkaballapur|
+|Chikkamagaluru|
+|Chikmagalur|
+|Chirang|
+|Chitradurga|
+|Chitrakoot|
+|Chittaurgarh|
+|Chittoor|
+|Chittorgarh|
+|Chumukedima|
+|Churachandpur|
+|Churu|
+|Coimbatore|
+|Cooch Behar|
+|Cuddalore|
+|Cuddapah|
+|Cuttack|
+|Dadra & Nagar Haveli|
+|Dadra and Nagar Haveli|
+|Dahod|
+|Dakshin Bastar Dantewada|
+|Dakshin Dinajpur|
+|Dakshina Kannada|
+|Daman|
+|Damoh|
+|Dang|
+|Dantewada|
+|Darbhanga|
+|Darjeeling|
+|Darjiling|
+|Darrang|
+|Datia|
+|Dausa|
+|Davanagere|
+|Davangere|
+|Deeg|
+|Dehradun|
+|Deogarh|
+|Deoghar|
+|Deoria|
+|Devbhumi Dwarka|
+|Dewas|
+|Dhalai|
+|Dhalai  *|
+|Dhamtari|
+|Dhanbad|
+|Dhar|
+|Dharashiv|
+|Dharmapuri|
+|Dharwad|
+|Dhaulpur|
+|Dhemaji|
+|Dhenkanal|
+|Dholpur|
+|Dhubri|
+|Dhule|
+|Dibang Valley|
+|Dibrugarh|
+|Didwana-Kuchaman|
+|Dima Hasao|
+|Dimapur|
+|Dindigul|
+|Dindori|
+|Diu|
+|Doda|
+|Dohad|
+|Domjur|
+|Dr. B. R. Ambedkar Konaseema|
+|Dumka|
+|Dungarpur|
+|Durg|
+|East|
+|East Champaran|
+|East Delhi|
+|East Garo Hills|
+|East Godavari|
+|East Jaintia Hills|
+|East Kameng|
+|East Khasi Hills|
+|East Midnapore|
+|East Midnapur|
+|East Nimar|
+|East Siang|
+|East Sikkim|
+|East Singhbhum|
+|Eastern West Khasi Hills|
+|Eluru|
+|Ernakulam|
+|Erode|
+|Etah|
+|Etawah|
+|Faridabad|
+|Faridkot|
+|Farrukhabad|
+|Fatehabad|
+|Fatehgarh Sahib|
+|Fatehpur|
+|Fazilka|
+|Ferozepur|
+|Firozabad|
+|Gadag|
+|Gadag *|
+|Gadchiroli|
+|Gajapati|
+|Ganderbal|
+|Gandhinagar|
+|Ganjam|
+|Garhwa|
+|Garhwa *|
+|Garhwal|
+|Gariyaband|
+|Gaurela-Pendra-Marwahi|
+|Gautam Buddha Nagar|
+|Gautam Buddha Nagar *|
+|Gaya|
+|Ghaziabad|
+|Ghazipur|
+|Gir Somnath|
+|Giridih|
+|Goalpara|
+|Godda|
+|Golaghat|
+|Gomati|
+|Gonda|
+|Gondia|
+|Gondiya|
+|Gondiya *|
+|Gopalganj|
+|Gorakhpur|
+|Gumla|
+|Guna|
+|Guntur|
+|Gurdaspur|
+|Gurugram|
+|Gwalior|
+|Hailakandi|
+|Hamirpur|
+|Hanumakonda|
+|Hanumangarh|
+|Haora|
+|Hapur|
+|Harda|
+|Harda *|
+|Hardoi|
+|Hardwar|
+|Haridwar|
+|Hasan|
+|Hassan|
+|Hathras|
+|Haveri|
+|Haveri *|
+|Hawrah|
+|Hazaribag|
+|Hazaribagh|
+|Hingoli|
+|Hingoli *|
+|Hisar|
+|Hnahthial|
+|Hojai|
+|Hooghiy|
+|Hooghly|
+|Hoshangabad|
+|Hoshiarpur|
+|Howrah|
+|Hugli|
+|Hyderabad|
+|Idukki|
+|Imphal East|
+|Imphal West|
+|Indore|
+|Jabalpur|
+|Jagatsinghpur|
+|Jagitial|
+|Jaintia Hills|
+|Jaipur|
+|Jaisalmer|
+|Jajpur|
+|Jalandhar|
+|Jalaun|
+|Jalgaon|
+|Jalna|
+|Jalor|
+|Jalore|
+|Jalpaiguri|
+|Jammu|
+|Jamnagar|
+|Jamtara|
+|Jamui|
+|Jangaon|
+|Jangoan|
+|Janjgir - Champa|
+|Janjgir Champa|
+|Jashpur|
+|Jaunpur|
+|Jayashankar Bhupalpally|
+|Jehanabad|
+|Jhabua|
+|Jhajjar|
+|Jhalawar|
+|Jhansi|
+|Jhargram|
+|Jharsuguda|
+|Jhunjhunu|
+|Jhunjhunun|
+|Jind|
+|Jiribam|
+|Jodhpur|
+|Jogulamba Gadwal|
+|Jorhat|
+|Junagadh|
+|K.V. Rangareddy|
+|K.V.Rangareddy|
+|Kabeerdham|
+|Kaimur (Bhabua)|
+|Kaithal|
+|Kakching|
+|Kakinada|
+|Kalaburagi|
+|Kalahandi|
+|Kalimpong|
+|Kallakurichi|
+|Kamareddy|
+|Kamle|
+|Kamrup|
+|Kamrup Metro|
+|Kancheepuram|
+|Kanchipuram|
+|Kandhamal|
+|Kangra|
+|Kanker|
+|Kannauj|
+|Kanniyakumari|
+|Kannur|
+|Kanpur Dehat|
+|Kanpur Nagar|
+|Kanyakumari|
+|Kapurthala|
+|Karaikal|
+|Karauli|
+|Karbi Anglong|
+|Kargil|
+|Karim Nagar|
+|Karimganj|
+|Karimnagar|
+|Karnal|
+|Karur|
+|Kasaragod|
+|Kasargod|
+|Kasganj|
+|Kathua|
+|Katihar|
+|Katni|
+|Kaushambi|
+|Kawardha|
+|Kendrapara|
+|Kendujhar|
+|Khagaria|
+|Khairagarh Chhuikhadan Gandai|
+|Khairthal-Tijara|
+|Khammam|
+|Khandwa|
+|Khargone|
+|Khawzawl|
+|Kheda|
+|Kheri|
+|Khorda|
+|Khordha|
+|Khordha  *|
+|Khowai|
+|Khunti|
+|Kinnaur|
+|Kiphire|
+|Kishanganj|
+|Kishtwar|
+|Koch Bihar|
+|Kodagu|
+|Kodarma|
+|Koderma|
+|Kohima|
+|Kokrajhar|
+|Kolar|
+|Kolasib|
+|Kolhapur|
+|Kolkata|
+|Kollam|
+|Komaram Bheem|
+|Kondagaon|
+|Koppal|
+|Koraput|
+|Korba|
+|Koriya|
+|Kota|
+|Kotputli-Behror|
+|Kottayam|
+|Kozhikode|
+|Kra Daadi|
+|Krishna|
+|Krishnagiri|
+|Kulgam|
+|Kullu|
+|Kupwara|
+|Kurnool|
+|Kurukshetra|
+|Kurung Kumey|
+|Kushinagar|
+|Kushinagar *|
+|Kutch|
+|Lahaul and Spiti|
+|Lahul & Spiti|
+|Lahul And Spiti|
+|Lakhimpur|
+|Lakhisarai|
+|Lakshadweep|
+|Lalitpur|
+|Latehar|
+|Latur|
+|Lawngtlai|
+|Leh|
+|Leh (Ladakh)|
+|Leparada|
+|Lohardaga|
+|Lohit|
+|Longding|
+|Longleng|
+|Lower Dibang Valley|
+|Lower Siang|
+|Lower Subansiri|
+|Lucknow|
+|Ludhiana|
+|Lunglei|
+|Madhepura|
+|Madhubani|
+|Madurai|
+|Mahabub Nagar|
+|Mahabubabad|
+|Mahabubnagar|
+|Maharajganj|
+|Mahasamund|
+|Mahbubnagar|
+|Mahendragarh|
+|Mahesana|
+|Mahisagar|
+|Mahoba|
+|Mahoba *|
+|Mahrajganj|
+|Maihar|
+|Mainpuri|
+|Majuli|
+|Malappuram|
+|Malda|
+|Maldah|
+|Malerkotla|
+|Malkangiri|
+|Mamit|
+|Mammit|
+|Mancherial|
+|Mandi|
+|Mandla|
+|Mandsaur|
+|Mandya|
+|Manendragarhchirmiribharatpur|
+|Manendragarh–Chirmiri–Bharatpur|
+|Mansa|
+|Mathura|
+|Mau|
+|Mauganj|
+|Mayiladuthurai|
+|Mayurbhanj|
+|Medak|
+|Medchal-Malkajgiri|
+|Medchal?Malkajgiri|
+|Medchal−Malkajgiri|
+|Medinipur|
+|Meerut|
+|Meluri|
+|Mirzapur|
+|Moga|
+|Mohali|
+|Mohalla-Manpur-Ambagarh Chowki|
+|Mohla-Manpur-Ambagarh Chouki|
+|Mokokchung|
+|Mon|
+|Monghyr|
+|Moradabad|
+|Morbi|
+|Morena|
+|Morigaon|
+|Mulugu|
+|Mumbai City|
+|Mumbai Suburban|
+|Mumbai( Sub Urban )|
+|Mungeli|
+|Munger|
+|Murshidabad|
+|Muzaffarnagar|
+|Muzaffarpur|
+|Mysuru|
+|N. T. R|
+|Nabarangpur|
+|Nadia|
+|Nagaon|
+|Nagapattinam|
+|Nagarkurnool|
+|Nagaur|
+|Nagpur|
+|Nainital|
+|Najafgarh|
+|Nalanda|
+|Nalbari|
+|Nalgonda|
+|Namakkal|
+|Namchi|
+|Namsai|
+|Nanded|
+|Nandurbar|
+|Nandurbar *|
+|Nandyal|
+|Narayanpet|
+|Narayanpur|
+|Narmada|
+|Narmadapuram|
+|Narsimhapur|
+|Narsinghpur|
+|Nashik|
+|Navsari|
+|Nawada|
+|Nayagarh|
+|Neemuch|
+|Nellore|
+|New Delhi|
+|Nicobar|
+|Nicobars|
+|Nirmal|
+|Niuland|
+|Niwari|
+|Nizamabad|
+|Noklak|
+|North|
+|North 24 Parganas|
+|North Cachar Hills|
+|North Delhi|
+|North Dinajpur|
+|North East|
+|North East Delhi|
+|North Garo Hills|
+|North Goa|
+|North Sikkim|
+|North Tripura|
+|North Twenty Four Parganas|
+|North West Delhi|
+|North and Middle Andaman|
+|Nuapada|
+|Nuh|
+|Osmanabad|
+|Pakaur|
+|Pakke Kessang|
+|Pakur|
+|Palakkad|
+|Palamau|
+|Palamu|
+|Palghar|
+|Pali|
+|Palnadu|
+|Palwal|
+|Panchkula|
+|Panchmahal|
+|Panchmahals|
+|Pandhurna|
+|Panipat|
+|Panna|
+|Papum Pare|
+|Parbhani|
+|Parvathipuram Manyam|
+|Paschim Bardhaman|
+|Paschim Medinipur|
+|Patan|
+|Pathanamthitta|
+|Pathankot|
+|Patiala|
+|Patna|
+|Pauri Garhwal|
+|Peddapalli|
+|Perambalur|
+|Peren|
+|Phalodi|
+|Phek|
+|Pherzawl|
+|Pilibhit|
+|Pithoragarh|
+|Pondicherry|
+|Poonch|
+|Porbandar|
+|Prakasam|
+|Pratapgarh|
+|Prayagraj|
+|Puducherry|
+|Pudukkottai|
+|Pulwama|
+|Punch|
+|Pune|
+|Purba Bardhaman|
+|Purba Medinipur|
+|Purbi Singhbhum|
+|Puri|
+|Purnea|
+|Purnia|
+|Purulia|
+|Raebareli|
+|Raichur|
+|Raigad|
+|Raigarh|
+|Raigarh(Mh)|
+|Raipur|
+|Raisen|
+|Rajanna Sircilla|
+|Rajgarh|
+|Rajkot|
+|Rajnandgaon|
+|Rajouri|
+|Rajsamand|
+|Ramanagar|
+|Ramanathapuram|
+|Ramban|
+|Ramgarh|
+|Rampur|
+|Ranchi|
+|Ranga Reddy|
+|Rangareddi|
+|Ranipet|
+|Ratlam|
+|Ratnagiri|
+|Rayagada|
+|Reasi|
+|Rewa|
+|Rewari|
+|Ri-Bhoi|
+|Rohtak|
+|Rohtas|
+|Rudraprayag|
+|Rupnagar|
+|S.A.S Nagar(Mohali)|
+|Sabar Kantha|
+|Sabarkantha|
+|Sagar|
+|Saharanpur|
+|Saharsa|
+|Sahebganj|
+|Sahibganj|
+|Saiha|
+|Saitual|
+|Sakti|
+|Salem|
+|Salumbar|
+|Samastipur|
+|Samba|
+|Sambalpur|
+|Sambhal|
+|Samstipur|
+|Sangareddy|
+|Sangli|
+|Sangrur|
+|Sant Kabir Nagar|
+|Sant Ravidas Nagar Bhadohi|
+|Saran|
+|Sarangarh-Bilaigarh|
+|Sas Nagar (Mohali)|
+|Satara|
+|Satna|
+|Sawai Madhopur|
+|Sehore|
+|Senapati|
+|Seoni|
+|Sepahijala|
+|Seraikela-Kharsawan|
+|Serchhip|
+|Shahdara|
+|Shahdol|
+|Shaheed Bhagat Singh Nagar|
+|Shahjahanpur|
+|Shajapur|
+|Shamator|
+|Shamli|
+|Sheikhpura|
+|Sheikpura|
+|Sheohar|
+|Sheopur|
+|Shi-Yomi|
+|Shimla|
+|Shivamogga|
+|Shivpuri|
+|Shopian|
+|Shrawasti|
+|Siang|
+|Sibsagar|
+|Siddharthnagar|
+|Siddipet|
+|Sidhi|
+|Sikar|
+|Simdega|
+|Sindhudurg|
+|Singrauli|
+|Sirmaur|
+|Sirohi|
+|Sirsa|
+|Sitamarhi|
+|Sitapur|
+|Sivaganga|
+|Siwan|
+|Solan|
+|Solapur|
+|Sonbhadra|
+|Sonipat|
+|Sonitpur|
+|South|
+|South 24 Pargana|
+|South 24 Parganas|
+|South Andaman|
+|South Delhi|
+|South Dinajpur|
+|South Dumdum(M)|
+|South East Delhi|
+|South Garo Hills|
+|South Goa|
+|South Salmara Mankachar|
+|South Sikkim|
+|South Tripura|
+|South Twenty Four Parganas|
+|South West Delhi|
+|South West Garo Hills|
+|South West Khasi Hills|
+|Sri Ganganagar|
+|Sri Muktsar Sahib|
+|Sri Potti Sriramulu Nellore|
+|Sri Sathya Sai|
+|Sribhumi|
+|Srikakulam|
+|Srinagar|
+|Subarnapur|
+|Sukma|
+|Sultanpur|
+|Sundargarh|
+|Sundergarh|
+|Supaul|
+|Surajpur|
+|Surat|
+|Surendra Nagar|
+|Surendranagar|
+|Surguja|
+|Suryapet|
+|Tamenglong|
+|Tamulpur District|
+|Tapi|
+|Tarn Taran|
+|Tawang|
+|Tehri Garhwal|
+|Tenkasi|
+|Thane|
+|Thanjavur|
+|The Nilgiris|
+|Theni|
+|Thiruvananthapuram|
+|Thiruvarur|
+|Thoothukudi|
+|Thoubal|
+|Thrissur|
+|Tikamgarh|
+|Tinsukia|
+|Tirap|
+|Tiruchirappalli|
+|Tirunelveli|
+|Tirupathur|
+|Tirupati|
+|Tirupattur|
+|Tiruppur|
+|Tiruvallur|
+|Tiruvannamalai|
+|Tiruvarur|
+|Tiswadi|
+|Tonk|
+|Tseminyu|
+|Tuensang|
+|Tumakuru|
+|Tuticorin|
+|Udaipur|
+|Udalguri|
+|Udham Singh Nagar|
+|Udhampur|
+|Udupi|
+|Udupi *|
+|Ujjain|
+|Ukhrul|
+|Umaria|
+|Una|
+|Unakoti|
+|Unnao|
+|Upper Siang|
+|Upper Subansiri|
+|Uttar Dinajpur|
+|Uttara Kannada|
+|Uttarkashi|
+|Vadodara|
+|Vaishali|
+|Valsad|
+|Varanasi|
+|Vellore|
+|Vidisha|
+|Vijayanagara|
+|Vijayapura|
+|Vikarabad|
+|Villupuram|
+|Virudhunagar|
+|Visakhapatnam|
+|Vizianagaram|
+|Wanaparthy|
+|Warangal|
+|Warangal (Urban)|
+|Wardha|
+|Washim|
+|Washim *|
+|Wayanad|
+|West|
+|West Champaran|
+|West Delhi|
+|West Garo Hills|
+|West Godavari|
+|West Jaintia Hills|
+|West Kameng|
+|West Karbi Anglong|
+|West Khasi Hills|
+|West Medinipur|
+|West Midnapore|
+|West Nimar|
+|West Siang|
+|West Sikkim|
+|West Singhbhum|
+|West Tripura|
+|Wokha|
+|Y. S. R|
+|Yadadri.|
+|Yadgir|
+|Yamuna Nagar|
+|Yamunanagar|
+|Yanam|
+|Yavatmal|
+|Zunheboto|
