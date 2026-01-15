@@ -123,22 +123,22 @@ Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
 
 Techniques: EDA, Feature Engineering, Anomaly Detection, Predictive Modeling
 
-project-root/
+📦 project-root/
 │
-├── data/
-│   ├── raw/
-│   └── processed/
+├── 📁 data/                  # 📊 Data Lake
+│   ├── 📥 raw/               # Original, immutable data dumps
+│   └── ⚙️ processed/         # Cleaned & feature-engineered datasets
 │
-├── notebooks/
-│   ├── enrolment_analysis.ipynb
-│   ├── demographic_analysis.ipynb
-│   └── biometric_analysis.ipynb
+├── 📓 notebooks/             # 🐍 Python / Jupyter Analysis
+│   ├── 📄 enrolment_analysis.ipynb
+│   ├── 👥 demographic_analysis.ipynb
+│   └── 🧬 biometric_analysis.ipynb
 │
-├── models/
+├── 🤖 models/                # 🧠 Trained ML models & weights (.pkl, .h5)
 │
-├── visuals/
+├── 🖼️ visuals/               # 📈 Exported charts, heatmaps & PDF reports
 │
-└── README.md
+└── 📝 README.md              # 📖 Project documentation & setup guide
 
 
 📌 Notes
