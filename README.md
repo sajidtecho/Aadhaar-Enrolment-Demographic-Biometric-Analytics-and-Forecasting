@@ -123,7 +123,6 @@ Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
 
 Techniques: EDA, Feature Engineering, Anomaly Detection, Predictive Modeling
 
-📁 Repository Structure
 ├── data/
 │   ├── raw/
 │   └── processed/
