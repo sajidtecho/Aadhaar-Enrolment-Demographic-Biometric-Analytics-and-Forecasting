@@ -206,5 +206,53 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-# Large Data Files
-01_data/processed/clean_biometric_data.csv
+# ====================================
+# SENSITIVE DATA - DO NOT COMMIT
+# ====================================
+# All Aadhaar biometric, demographic, and enrollment data
+01_data/
+!01_data/.gitkeep
+
+# Notebook outputs and generated data
+02_notebooks/**/*.csv
+02_notebooks/merged_*.csv
+02_notebooks/feature_*.csv
+02_notebooks/future_*.csv
+02_notebooks/sample_*.csv
+
+# Model files (may contain trained data)
+03_models/**/*.pkl
+03_models/**/*.h5
+03_models/**/*.pth
+03_models/**/*.joblib
+03_models/**/*.model
+03_models/**/*.sav
+
+# Generated reports and visualizations
+04_visuals/
+!04_visuals/.gitkeep
+05_reports/
+!05_reports/.gitkeep
+
+# Location and debugging output
+locations_output.txt
+debug_*.log
+
+# Environment files with API keys
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+config.json
+secrets.json
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.bak
+*.backup
+*_backup.*

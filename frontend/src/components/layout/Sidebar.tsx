@@ -1,4 +1,4 @@
-import { LayoutDashboard, Fingerprint, Users, UserPlus, AlertTriangle, BarChart3, HelpCircle, ShieldCheck } from 'lucide-react';
+import { LayoutDashboard, Fingerprint, Users, UserPlus, AlertTriangle, BarChart3, HelpCircle, ShieldCheck, Image } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '../../utils/utils';
 
@@ -9,6 +9,7 @@ const navItems = [
     { name: 'Enrolment Prediction', icon: UserPlus, path: '/predict/enrolment' },
     { name: 'Anomaly Detection', icon: AlertTriangle, path: '/anomalies' },
     { name: 'Model Insights', icon: BarChart3, path: '/insights' },
+    { name: 'Visualizations', icon: Image, path: '/visualizations' },
     { name: 'Verify Integration', icon: ShieldCheck, path: '/verify' },
     { name: 'About / Methodology', icon: HelpCircle, path: '/about' },
 ];

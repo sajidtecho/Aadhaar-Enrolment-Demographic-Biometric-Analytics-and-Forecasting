@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: adhar-backend
+    ports:
+      - "8002:8002"
+    volumes:
+      # Mount models and data to allow hot-swapping/updates without rebuild
+      - ./03_models:/app/03_models
+      - ./01_data:/app/01_data
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: adhar-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: always

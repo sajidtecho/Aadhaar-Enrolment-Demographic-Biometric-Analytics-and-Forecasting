@@ -2,12 +2,14 @@ import { useState, useEffect, useMemo } from 'react';
 import AnomalyTable from '../components/anomaly/AnomalyTable';
 import { getAnomalies } from '../services/api';
 import type { DistrictRisk } from '../services/api';
-import { Filter, Download, Loader2, AlertTriangle, RefreshCw } from 'lucide-react';
+import { Filter, Download, Loader2, AlertTriangle, RefreshCw, FileText, FileSpreadsheet } from 'lucide-react';
+import { exportAnomalies } from '../utils/exportUtils';
 
 export default function AnomalyDetection() {
     const [statusFilter, setStatusFilter] = useState('All');
     const [stateFilter, setStateFilter] = useState('All');
     const [districtFilter, setDistrictFilter] = useState('All');
+    const [showExportMenu, setShowExportMenu] = useState(false);
     
     const [districts, setDistricts] = useState<DistrictRisk[]>([]);
     const [loading, setLoading] = useState(true);
@@ -53,6 +55,15 @@ export default function AnomalyDetection() {
         return matchesStatus && matchesState && matchesDistrict;
     });
 
+    // Calculate statistics
+    const stats = useMemo(() => {
+        const criticalCount = districts.filter(d => d.status === 'Critical').length;
+        const highCount = districts.filter(d => d.status === 'High').length;
+        const mediumCount = districts.filter(d => d.status === 'Medium').length;
+        const lowCount = districts.filter(d => d.status === 'Low').length;
+        return { criticalCount, highCount, mediumCount, lowCount };
+    }, [districts]);
+
     if (loading) {
         return (
             <div className="flex h-96 items-center justify-center">
@@ -77,16 +88,106 @@ export default function AnomalyDetection() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-slate-800">Anomaly Detection</h1>
-                    <p className="text-slate-500">Identify irregularities in enrolment and update patterns</p>
+                    <p className="text-slate-500">Identify irregularities in biometric demand patterns across districts</p>
                 </div>
                 <div className="flex items-center gap-2">
                      <button onClick={() => window.location.reload()} className="p-2 text-slate-500 hover:text-blue-600 transition-colors">
                         <RefreshCw className="w-5 h-5" />
                     </button>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50">
-                        <Download className="w-4 h-4" />
-                        Export CSV
-                    </button>
+                    <div className="relative">
+                        <button 
+                            onClick={() => setShowExportMenu(!showExportMenu)}
+                            className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50"
+                        >
+                            <Download className="w-4 h-4" />
+                            Export Data
+                        </button>
+                        {showExportMenu && (
+                            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-200 z-10">
+                                <button
+                                    onClick={() => {
+                                        exportAnomalies(filteredDistricts, 'csv');
+                                        setShowExportMenu(false);
+                                    }}
+                                    className="w-full flex items-center gap-2 px-4 py-2 text-left text-sm text-slate-600 hover:bg-slate-50"
+                                >
+                                    <FileSpreadsheet className="w-4 h-4" />
+                                    Export as CSV
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        exportAnomalies(filteredDistricts, 'pdf');
+                                        setShowExportMenu(false);
+                                    }}
+                                    className="w-full flex items-center gap-2 px-4 py-2 text-left text-sm text-slate-600 hover:bg-slate-50"
+                                >
+                                    <FileText className="w-4 h-4" />
+                                    Export as PDF
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        exportAnomalies(filteredDistricts, 'word');
+                                        setShowExportMenu(false);
+                                    }}
+                                    className="w-full flex items-center gap-2 px-4 py-2 text-left text-sm text-slate-600 hover:bg-slate-50 rounded-b-lg"
+                                >
+                                    <FileText className="w-4 h-4" />
+                                    Export as Word
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            {/* Statistics Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="bg-white p-4 rounded-xl border border-red-200 shadow-sm">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <p className="text-xs font-medium text-red-600 uppercase tracking-wide">Critical</p>
+                            <p className="text-2xl font-bold text-slate-800 mt-1">{stats.criticalCount}</p>
+                        </div>
+                        <div className="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center">
+                            <AlertTriangle className="w-6 h-6 text-red-600" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="bg-white p-4 rounded-xl border border-orange-200 shadow-sm">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <p className="text-xs font-medium text-orange-600 uppercase tracking-wide">High</p>
+                            <p className="text-2xl font-bold text-slate-800 mt-1">{stats.highCount}</p>
+                        </div>
+                        <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center">
+                            <AlertTriangle className="w-6 h-6 text-orange-600" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="bg-white p-4 rounded-xl border border-amber-200 shadow-sm">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <p className="text-xs font-medium text-amber-600 uppercase tracking-wide">Medium</p>
+                            <p className="text-2xl font-bold text-slate-800 mt-1">{stats.mediumCount}</p>
+                        </div>
+                        <div className="w-12 h-12 bg-amber-50 rounded-lg flex items-center justify-center">
+                            <AlertTriangle className="w-6 h-6 text-amber-600" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <p className="text-xs font-medium text-slate-600 uppercase tracking-wide">Low</p>
+                            <p className="text-2xl font-bold text-slate-800 mt-1">{stats.lowCount}</p>
+                        </div>
+                        <div className="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center">
+                            <AlertTriangle className="w-6 h-6 text-slate-400" />
+                        </div>
+                    </div>
                 </div>
             </div>
 

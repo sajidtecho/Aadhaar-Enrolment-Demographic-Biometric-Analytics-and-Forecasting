@@ -81,9 +81,55 @@ export const getDashboardData = async (): Promise<DashboardResponse> => {
     return response.data;
 };
 
+export const getEnrollmentTrends = async (): Promise<TrendData[]> => {
+    const response = await api.get<{value: TrendData[], Count: number}>('/enrollment-trends');
+    return response.data.value;
+};
+
 export const getAnomalies = async (): Promise<DistrictRisk[]> => {
     const response = await api.get<DistrictRisk[]>('/anomalies');
     return response.data;
 };
 
 export default api;
+
+export interface BiometricPredictionRequest {
+    age_0_5: number;
+    age_5_17: number;
+    age_18_greater: number;
+    month: number;
+    day_of_week?: number;
+}
+
+export interface BiometricPredictionResponse {
+    predicted_bio_total: number;
+    confidence_score: number;
+}
+
+export const predictBiometricLoad = async (data: BiometricPredictionRequest): Promise<BiometricPredictionResponse> => {
+    try {
+        const response = await api.post('/predict/biometric', data);
+        return response.data;
+    } catch (error) {
+         console.error('Biometric Prediction API Error:', error);
+        throw error;
+    }
+};
+
+export interface DemographicPredictionResponse {
+    prediction: number;
+    confidence: number;
+    trend: number;
+    state: string;
+    district: string;
+}
+
+export const predictDemographic = async (payload: PredictionRequest): Promise<DemographicPredictionResponse> => {
+    try {
+        const response = await api.post('/predict/demographic', payload);
+        return response.data;
+    } catch (error) {
+        console.error('Demographic Prediction API Error:', error);
+        throw error;
+    }
+};

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, Loader2 } from 'lucide-react';
 import { cn } from '../../utils/utils';
 import { states as allStates, districts as allDistricts } from '../../utils/locations';
@@ -6,20 +6,26 @@ import { states as allStates, districts as allDistricts } from '../../utils/loca
 interface PredictionFormProps {
     onPredict: (data: any) => void;
     isLoading: boolean;
+    initialType?: string;
 }
 
-export default function PredictionForm({ onPredict, isLoading }: PredictionFormProps) {
+export default function PredictionForm({ onPredict, isLoading, initialType = 'demand' }: PredictionFormProps) {
     const [formData, setFormData] = useState({
         state: '',
         district: '',
-        type: 'demand', // 'demand' (biometric) or 'enrollment' (adult forecast)
+        type: initialType,
         horizon: '1',
         year: new Date().getFullYear(),
         month: new Date().getMonth() + 2, // Next month by default
         bio_age_5_17: 500,
         bio_age_17_: 1200,
-        age_0_5: 150 // Added for enrollment prediction
+        age_0_5: 150
     });
+    
+    // Update type when initialType changes
+    useEffect(() => {
+        setFormData(prev => ({ ...prev, type: initialType }));
+    }, [initialType]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -38,33 +44,47 @@ export default function PredictionForm({ onPredict, isLoading }: PredictionFormP
             <h3 className="text-lg font-semibold text-slate-800 mb-4">Generate Forecast</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
 
-                {/* Model Type Selector */}
-                <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-lg">
-                    <button
-                        type="button"
-                        onClick={() => setFormData({...formData, type: 'demand'})}
-                        className={cn(
-                            "py-2 text-sm font-medium rounded-md transition-all",
-                            formData.type === 'demand' 
-                                ? "bg-white text-blue-700 shadow-sm" 
-                                : "text-slate-500 hover:text-slate-700"
-                        )}
-                    >
-                        Biometric Demand
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => setFormData({...formData, type: 'enrollment'})}
-                        className={cn(
-                            "py-2 text-sm font-medium rounded-md transition-all",
-                            formData.type === 'enrollment' 
-                                ? "bg-white text-blue-700 shadow-sm" 
-                                : "text-slate-500 hover:text-slate-700"
-                        )}
-                    >
-                        Adult Enrollment
-                    </button>
-                </div>
+                {/* Model Type Selector - Only show if no initial type is set from URL */}
+                {!initialType && (
+                    <div className="grid grid-cols-3 gap-2 p-1 bg-slate-100 rounded-lg">
+                        <button
+                            type="button"
+                            onClick={() => setFormData({...formData, type: 'demand'})}
+                            className={cn(
+                                "py-2 text-sm font-medium rounded-md transition-all",
+                                formData.type === 'demand' 
+                                    ? "bg-white text-blue-700 shadow-sm" 
+                                    : "text-slate-500 hover:text-slate-700"
+                            )}
+                        >
+                            Demographic Demand
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setFormData({...formData, type: 'enrollment'})}
+                            className={cn(
+                                "py-2 text-sm font-medium rounded-md transition-all",
+                                formData.type === 'enrollment' 
+                                    ? "bg-white text-blue-700 shadow-sm" 
+                                    : "text-slate-500 hover:text-slate-700"
+                            )}
+                        >
+                            Operational Forecast
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setFormData({...formData, type: 'biometric_load'})}
+                            className={cn(
+                                "py-2 text-sm font-medium rounded-md transition-all",
+                                formData.type === 'biometric_load' 
+                                    ? "bg-white text-blue-700 shadow-sm" 
+                                    : "text-slate-500 hover:text-slate-700"
+                            )}
+                        >
+                            Biometric Load
+                        </button>
+                    </div>
+                )}
                 
                 {/* State Selection */}
                 <div className="space-y-1.5">
@@ -135,50 +155,7 @@ export default function PredictionForm({ onPredict, isLoading }: PredictionFormP
                      </div>
                 </div>
 
-                {/* Live Parameters */}
-                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-3">
-                    <h4 className="text-xs font-semibold uppercase text-slate-500">
-                        {formData.type === 'demand' ? 'Live Biometric Inputs' : 'Live Population Inputs'}
-                    </h4>
-                    
-                    {formData.type === 'enrollment' && (
-                         <div className="space-y-1.5">
-                            <label className="text-sm font-medium text-slate-700">Child (0-5 yrs)</label>
-                            <input 
-                                title="0-5 population"
-                                type="number"
-                                className="w-full pl-4 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                value={formData.age_0_5}
-                                onChange={(e) => setFormData({...formData, age_0_5: parseFloat(e.target.value)})}
-                            />
-                        </div>
-                    )}
 
-                    <div className="space-y-1.5">
-                        <label className="text-sm font-medium text-slate-700">
-                            {formData.type === 'demand' ? 'Updates (5-17)' : 'Child/Youth (5-17)'}
-                        </label>
-                        <input 
-                            title="5-17 population"
-                            type="number"
-                            className="w-full pl-4 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            value={formData.bio_age_5_17}
-                            onChange={(e) => setFormData({...formData, bio_age_5_17: parseFloat(e.target.value)})}
-                        />
-                    </div>
-                    <div className="space-y-1.5">
-                        <label className="text-sm font-medium text-slate-700">
-                           {formData.type === 'demand' ? 'Updates (17+)' : 'Adult (18+)'}
-                        </label>
-                        <input 
-                            title="17+ population"
-                            type="number"
-                            className="w-full pl-4 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            value={formData.bio_age_17_}
-                            onChange={(e) => setFormData({...formData, bio_age_17_: parseFloat(e.target.value)})}
-                        />
-                    </div>
-                </div>
 
                 <button
                     type="submit"

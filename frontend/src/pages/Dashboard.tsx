@@ -2,20 +2,27 @@ import { useEffect, useState } from 'react';
 import KPICard from '../components/dashboard/KPICard';
 import TrendChart from '../components/dashboard/TrendChart';
 import DistrictTable from '../components/dashboard/DistrictTable';
-import { getDashboardData } from '../services/api';
-import type { DashboardResponse } from '../services/api';
-import { Filter, Loader2, AlertTriangle } from 'lucide-react';
+import { getDashboardData, getEnrollmentTrends } from '../services/api';
+import type { DashboardResponse, TrendData } from '../services/api';
+import { Loader2, AlertTriangle, Download, FileText, FileSpreadsheet } from 'lucide-react';
+import { exportDashboardSummary } from '../utils/exportUtils';
 
 export default function Dashboard() {
     const [data, setData] = useState<DashboardResponse | null>(null);
+    const [enrollmentTrends, setEnrollmentTrends] = useState<TrendData[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [showExportMenu, setShowExportMenu] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await getDashboardData();
-                setData(response);
+                const [dashData, enrolData] = await Promise.all([
+                    getDashboardData(),
+                    getEnrollmentTrends()
+                ]);
+                setData(dashData);
+                setEnrollmentTrends(enrolData);
                 setError(null);
             } catch (err) {
                 console.error("Failed to fetch dashboard data:", err);
@@ -59,16 +66,58 @@ export default function Dashboard() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-slate-800">Dashboard Overview</h1>
-                    <p className="text-slate-500">Real-time predictive insights for UIDAI operations</p>
+                    <p className="text-slate-500">Real-time data from trained ML models</p>
+                    <div className="flex gap-3 mt-2">
+                        <span className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded border border-blue-200">
+                            📊 Biometric: 1.86M records
+                        </span>
+                        <span className="text-xs px-2 py-1 bg-green-50 text-green-700 rounded border border-green-200">
+                            👥 Enrollment: 983K records
+                        </span>
+                    </div>
                 </div>
-                <div className="flex items-center gap-2">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50">
-                        <Filter className="w-4 h-4" />
-                        Filter View
+                <div className="relative">
+                    <button
+                        onClick={() => setShowExportMenu(!showExportMenu)}
+                        className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50"
+                    >
+                        <Download className="w-4 h-4" />
+                        Export Summary
                     </button>
-                    <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 shadow-sm">
-                        Export Report
-                    </button>
+                    {showExportMenu && (
+                        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-200 z-10">
+                            <button
+                                onClick={() => {
+                                    exportDashboardSummary(data?.kpi || [], data?.districts || [], 'csv');
+                                    setShowExportMenu(false);
+                                }}
+                                className="w-full flex items-center gap-2 px-4 py-2 text-left text-sm text-slate-600 hover:bg-slate-50 rounded-t-lg"
+                            >
+                                <FileSpreadsheet className="w-4 h-4" />
+                                Export as CSV
+                            </button>
+                            <button
+                                onClick={() => {
+                                    exportDashboardSummary(data?.kpi || [], data?.districts || [], 'pdf');
+                                    setShowExportMenu(false);
+                                }}
+                                className="w-full flex items-center gap-2 px-4 py-2 text-left text-sm text-slate-600 hover:bg-slate-50"
+                            >
+                                <FileText className="w-4 h-4" />
+                                Export as PDF
+                            </button>
+                            <button
+                                onClick={() => {
+                                    exportDashboardSummary(data?.kpi || [], data?.districts || [], 'word');
+                                    setShowExportMenu(false);
+                                }}
+                                className="w-full flex items-center gap-2 px-4 py-2 text-left text-sm text-slate-600 hover:bg-slate-50 rounded-b-lg"
+                            >
+                                <FileText className="w-4 h-4" />
+                                Export as Word
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -80,38 +129,55 @@ export default function Dashboard() {
             </div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="lg:col-span-2">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <div className="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 className="text-lg font-semibold text-slate-800">📊 Biometric Updates Trend</h3>
+                            <p className="text-xs text-slate-500 mt-1">6-month historical + 1-month forecast</p>
+                        </div>
+                        <div className="flex items-center gap-4 text-xs">
+                            <div className="flex items-center gap-2">
+                                <span className="w-3 h-3 rounded-full bg-blue-600"></span>
+                                <span className="text-slate-600">Actual</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="w-3 h-3 rounded-full bg-indigo-500 border-2 border-dashed"></span>
+                                <span className="text-slate-600">Predicted</span>
+                            </div>
+                        </div>
+                    </div>
                     <TrendChart data={data.trend} />
                 </div>
-                <div className="lg:col-span-1">
-                    <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl p-6 text-white h-full">
-                        <h3 className="text-lg font-semibold mb-4">Urgent Actions</h3>
-                        <ul className="space-y-4">
-                            <li className="flex items-start gap-3 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                                <div className="w-2 h-2 rounded-full bg-red-400 mt-2"></div>
-                                <div>
-                                    <p className="font-medium text-sm">High Load in Pune</p>
-                                    <p className="text-xs text-blue-100 opacity-80 mt-1">Deploy 4 additional kits to Haveli center immediately.</p>
-                                </div>
-                            </li>
-                            <li className="flex items-start gap-3 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                                <div className="w-2 h-2 rounded-full bg-amber-400 mt-2"></div>
-                                <div>
-                                    <p className="font-medium text-sm">Anomaly in Bihar</p>
-                                    <p className="text-xs text-blue-100 opacity-80 mt-1">Unusual spike in demographic updates detected.</p>
-                                </div>
-                            </li>
-                        </ul>
-                        <button className="w-full mt-6 py-2 bg-white text-blue-700 font-medium text-sm rounded-lg hover:bg-blue-50 transition-colors">
-                            View All Alerts
-                        </button>
+                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <div className="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 className="text-lg font-semibold text-slate-800">👥 Enrollment Trend</h3>
+                            <p className="text-xs text-slate-500 mt-1">6-month historical + 1-month forecast</p>
+                        </div>
+                        <div className="flex items-center gap-4 text-xs">
+                            <div className="flex items-center gap-2">
+                                <span className="w-3 h-3 rounded-full bg-blue-600"></span>
+                                <span className="text-slate-600">Actual</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="w-3 h-3 rounded-full bg-indigo-500 border-2 border-dashed"></span>
+                                <span className="text-slate-600">Predicted</span>
+                            </div>
+                        </div>
                     </div>
+                    {enrollmentTrends && <TrendChart data={enrollmentTrends} />}
                 </div>
             </div>
 
-            {/* District Table */}
-            <DistrictTable districts={data.districts} />
+            {/* District Risk Table */}
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm">
+                <div className="px-6 py-4 border-b border-slate-100">
+                    <h3 className="text-lg font-semibold text-slate-800">High Priority Districts (Real Data)</h3>
+                    <p className="text-xs text-slate-500 mt-1">Top 5 districts by actual biometric update volume</p>
+                </div>
+                <DistrictTable districts={data.districts} />
+            </div>
         </div>
     );
 }

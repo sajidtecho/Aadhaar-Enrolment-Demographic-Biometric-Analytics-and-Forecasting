@@ -4,7 +4,7 @@ import Dashboard from './pages/Dashboard';
 import Prediction from './pages/Prediction';
 import AnomalyDetection from './pages/AnomalyDetection';
 import ModelInsights from './pages/ModelInsights';
-
+import Visualizations from './pages/Visualizations';
 import ModelVerification from './pages/ModelVerification';
 
 // Placeholder Pages (will be replaced later)
@@ -19,6 +19,7 @@ function App() {
           <Route path="predict/:type" element={<Prediction />} />
           <Route path="anomalies" element={<AnomalyDetection />} />
           <Route path="insights" element={<ModelInsights />} />
+          <Route path="visualizations" element={<Visualizations />} />
           <Route path="verify" element={<ModelVerification />} />
           <Route path="about" element={<About />} />
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,0 +1,39 @@
+# Ignore virtual environments
+.venv
+venv
+ENV
+env
+
+# Ignore node modules
+node_modules
+frontend/node_modules
+
+# Ignore git
+.git
+.gitignore
+
+# Ignore docker files
+docker-compose.yml
+backend/Dockerfile
+frontend/Dockerfile
+
+# Ignore IDE files
+.vscode
+.idea
+
+# Ignore cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Ignore logs
+*.log
+
+# Ignore local files that might interfere
+.env
+dist
+build
+coverage

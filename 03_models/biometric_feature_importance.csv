@@ -1,0 +1,17 @@
+feature,importance
+day_of_month,0.68398774
+bio_total_rolling_mean_7,0.22869556
+bio_total_lag_1,0.02525801
+age_18_greater,0.013720871
+bio_total_rolling_std_7,0.013552096
+quarter,0.0054237265
+age_month_interaction,0.005163847
+ratio_5_17,0.004520078
+age_0_5,0.0041637416
+ratio_17_plus,0.0041210596
+day_of_week,0.0041113836
+month,0.00282726
+age_5_17,0.0022545066
+is_weekend,0.0015317874
+bio_total_lag_7,0.00066828827
+bio_total_lag_30,0.0

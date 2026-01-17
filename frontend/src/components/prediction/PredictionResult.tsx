@@ -13,6 +13,9 @@ interface PredictionResultProps {
             peakPressureRatio: number;
             persistenceScore: number;
         };
+        predictedMonth?: number;
+        predictedYear?: number;
+        futurePredictions?: Array<{month: string; value: number; isPrediction: boolean}>;
     } | null;
 }
 
@@ -65,25 +68,55 @@ export default function PredictionResult({ data }: PredictionResultProps) {
             </div>
 
             <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                <h4 className="text-sm font-semibold text-slate-800 mb-4">6-Month Trend Projection</h4>
-                <div className="h-64 w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={data.history}>
-                            <defs>
-                                <linearGradient id="colorPred" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.2} />
-                                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
-                                </linearGradient>
-                            </defs>
-                            <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#94a3b8' }} />
-                            <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#94a3b8' }} />
-                            <Tooltip
-                                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                            />
-                            <Area type="monotone" dataKey="value" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#colorPred)" />
-                        </AreaChart>
-                    </ResponsiveContainer>
-                </div>
+                <h4 className="text-sm font-semibold text-slate-800 mb-4">Trend Projection with Your Predictions</h4>
+                {(() => {
+                    // Combine history with all future predictions
+                    const chartData = [
+                        ...data.history,
+                        ...(data.futurePredictions || [])
+                    ];
+                    
+                    const numPredictions = data.futurePredictions?.length || 1;
+                    const firstPredMonth = data.futurePredictions?.[0]?.month || 'Future';
+                    const lastPredMonth = data.futurePredictions?.[numPredictions - 1]?.month || firstPredMonth;
+                    
+                    return (
+                        <div className="h-64 w-full">
+                            <p className="text-xs text-slate-500 mb-3">
+                                Historical data + <span className="font-semibold text-blue-600">{numPredictions} month{numPredictions > 1 ? 's' : ''} prediction ({firstPredMonth}{numPredictions > 1 ? ` to ${lastPredMonth}` : ''})</span>
+                            </p>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart data={chartData}>
+                                    <defs>
+                                        <linearGradient id="colorPred" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.2} />
+                                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                                        </linearGradient>
+                                    </defs>
+                                    <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                                    <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#94a3b8' }} />
+                                    <Tooltip
+                                        contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                                        content={({ active, payload }) => {
+                                            if (active && payload && payload.length) {
+                                                const data = payload[0].payload;
+                                                return (
+                                                    <div className="bg-white p-3 rounded-lg shadow-lg border border-slate-200">
+                                                        <p className="text-sm font-semibold text-slate-800">{data.month}</p>
+                                                        <p className="text-sm text-slate-600">Value: <span className="font-bold">{data.value?.toLocaleString()}</span></p>
+                                                        {data.isPrediction && <p className="text-xs text-blue-600 mt-1">✨ Your Prediction</p>}
+                                                    </div>
+                                                );
+                                            }
+                                            return null;
+                                        }}
+                                    />
+                                    <Area type="monotone" dataKey="value" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#colorPred)" />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        </div>
+                    );
+                })()}
             </div>
         </div>
     );
