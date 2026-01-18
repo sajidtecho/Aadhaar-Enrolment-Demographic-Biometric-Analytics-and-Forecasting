@@ -54,7 +54,7 @@ def test_ml_prediction():
         if response.status_code == 200:
             data = response.json()
             print(f"✓ Prediction successful!")
-            print(f"  Predicted Demand: {data.get('predicted_demand', 'N/A')}")
+            print(f"  Predicted Demand: {data.get('prediction', 'N/A')}")
             print(f"  Confidence: {data.get('confidence', 'N/A')}")
             return True
         else:
@@ -80,7 +80,7 @@ def test_biometric_prediction():
     }
     
     try:
-        response = requests.post(f"{BASE_URL}/predict-biometric", json=test_payload, timeout=10)
+        response = requests.post(f"{BASE_URL}/predict/biometric", json=test_payload, timeout=10)
         if response.status_code == 200:
             data = response.json()
             print(f"✓ Biometric prediction successful!")
@@ -115,6 +115,28 @@ def test_dashboard_endpoint():
         print(f"✗ Error: {e}")
         return False
 
+def test_anomaly_endpoint():
+    """Test anomaly detection endpoint"""
+    print("\n" + "="*50)
+    print("5a. Testing Anomaly Endpoint...")
+    print("="*50)
+    
+    try:
+        response = requests.get(f"{BASE_URL}/anomalies", timeout=30)
+        if response.status_code == 200:
+            data = response.json()
+            print(f"✓ Anomaly data retrieved!")
+            print(f"  Total Anomalies: {len(data)}")
+            if len(data) > 0:
+                print(f"  Sample: {data[0]['district']} - {data[0]['status']}")
+            return True
+        else:
+            print(f"✗ Anomaly check failed: {response.status_code}")
+            return False
+    except Exception as e:
+        print(f"✗ Error: {e}")
+        return False
+
 def test_bulk_prediction():
     """Test bulk prediction endpoint"""
     print("\n" + "="*50)
@@ -122,7 +144,7 @@ def test_bulk_prediction():
     print("="*50)
     
     test_payload = {
-        "requests": [
+        "items": [
             {
                 "state": "Delhi",
                 "district": "Central Delhi",
@@ -147,7 +169,7 @@ def test_bulk_prediction():
         if response.status_code == 200:
             data = response.json()
             print(f"✓ Bulk prediction successful!")
-            print(f"  Predictions returned: {len(data.get('predictions', []))}")
+            print(f"  Predictions returned: {len(data.get('results', []))}")
             return True
         else:
             print(f"✗ Bulk prediction failed: {response.status_code}")
@@ -189,6 +211,7 @@ def main():
         "ML Prediction": test_ml_prediction(),
         "Biometric Model": test_biometric_prediction(),
         "Dashboard API": test_dashboard_endpoint(),
+        "Anomaly Endpoint": test_anomaly_endpoint(),
         "Bulk Prediction": test_bulk_prediction(),
         "Frontend": test_frontend()
     }

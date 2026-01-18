@@ -21,9 +21,12 @@ export default function AnomalyDetection() {
                 const response = await getAnomalies();
                 setDistricts(response);
                 setError(null);
-            } catch (err) {
+            } catch (err: any) {
                 console.error("Failed to fetch anomaly data:", err);
-                setError("Failed to load data.");
+                const msg = err.response?.data?.detail 
+                    || err.message 
+                    || "Failed to load anomaly data from server.";
+                setError(`${msg} (Please ensure backend is running at http://localhost:8002)`);
             } finally {
                 setLoading(false);
             }

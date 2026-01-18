@@ -156,6 +156,11 @@ class DashboardService:
             elif vol > threshold_high: status = 'High'
             elif vol > threshold_medium: status = 'Medium'
             
+            # Optimization: Skip 'Low' risk to ensure API responsiveness and relevance
+            # Processing 20k+ records causes timeouts
+            if status == 'Low':
+                continue
+
             # Risk score 0-100 normalized against max volume
             score = int((vol / max_vol) * 100) if max_vol > 0 else 0
             

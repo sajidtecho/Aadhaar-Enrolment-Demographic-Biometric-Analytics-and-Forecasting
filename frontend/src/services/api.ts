@@ -3,7 +3,7 @@ import axios from 'axios';
 // Create axios instance (ready for real backend)
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8002/api',
-    timeout: 10000,
+    timeout: 30000,
 });
 
 export interface Metric {
